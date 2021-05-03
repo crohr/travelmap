@@ -1,0 +1,35 @@
+<div class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+    <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
+      <h1 class="font-bold text-center text-4xl text-yellow-500">Travel<span class="text-blue-500">Map</span></h1>
+      <div class="flex flex-col bg-white p-10 rounded-lg shadow space-y-6">
+        <div class="divide-y divide-gray-200">
+          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            <h2 class="font-bold text-xl text-center">Results</h2>
+						<table class="table-fixed text-sm">
+              <thead>
+                <tr>
+                  <th class="text-left">City</th>
+                  <th class="text-left">Country</th>
+                  <th class="text-left">Distance</th>
+                </tr>
+              </thead>
+							<tbody>
+								<% @cities.each do |city| %>
+									<%= content_tag :tr do %>
+										<%= content_tag :td, city.name, class: "pr-4" %>
+										<%= content_tag :td, city.country, class: "pr-4" %>
+										<%= content_tag :td, number_to_human(city.distance, unit: "km", precision: 2, significant: false), class: "pr-4" %>
+									<% end %>
+								<% end %>
+							</tbody>
+						</table>
+          </div>
+          <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
+            <p>
+              <%= link_to "&larr;  Back".html_safe, root_path, class: "text-cyan-600 hover:text-cyan-700" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
